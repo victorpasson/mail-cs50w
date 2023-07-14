@@ -12,9 +12,9 @@ O projeto foi disponibilizado para interação por meio do [Python Any Where](ht
 
 Um breve vídeo de demonstração do resultado do projeto foi feito e hospedado no [YouTube](https://youtu.be/VJNak3T9u4I).
 
-## Especificações do projeto
+## Especificações do Projeto
 
-Usando JavaScript, HTML e CSS, complete a implementação de uma cliente de email no arquivo *inbox.js*. Você deve cumprir os seguintes requisitos:
+Usando JavaScript, HTML e CSS, complete a implementação de um client de email no arquivo *inbox.js*. Você deve cumprir os seguintes requisitos:
 
 1.	**Envio de Email**: quando o usuário submeter um formulário com destinatário, assunto e conteúdo, adicione o código JavaScript para enviar o e-mail.
 	* Você pode querer fazer uma requisição do tipo *POST*, passando valores para *recipients*, *subject* e *body*;

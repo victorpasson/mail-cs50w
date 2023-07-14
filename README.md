@@ -1,44 +1,46 @@
 # CS50 - Project 3 - Mail
 
-Repositório que contém o código para a solução do nono projeto do curso CS50. A aplicação consiste em uma empresa de compra e vendas de ações. O objetivo principal do projeto é permitir que os usuários veja a cotação atual, compre ações, venda ações e veja seu histórico de transações. A aplicação foi construída com o Flask framework.
+Repositório que contém o código para a solução do quarto projeto do curso CS50W. A aplicação consiste em um gerenciador de e-mail fake. O objetivo principal do projeto  é permitir que os usuários se registrem, façam login, vejam sua caixa principal, enviem, arquivem e vejam os emails enviados. A aplicação foi construída com o Django framework.
 
-[![Page Wiki Project](https://i.postimg.cc/JnfrdSf6/Dja.png)](https://vvpasson.pythonanywhere.com/login)
+[![Page Mail Project](https://i.postimg.cc/MZBC3pGJ/Dja.png)](https://jvpasson.pythonanywhere.com/)
 
 ## Página do Projeto
 
-O projeto foi disponibilizado para interação por meio do [Python Any Where](https://vvpasson.pythonanywhere.com/login).
-
-Obs.: Por a aplicação estar utilizando uma chave API de teste grátis da IEX Cloud pode ser que quando você tentar fazer a busca por ações pode não funciona - retornará que é inválida - isso ocorre porque a chave grátis tem tempo de duração. Após o tempo de teste gratuito somente pagando para continuar realizando consultas na plataforma da IEX Cloud, o que não é de meu interesse.
+O projeto foi disponibilizado para interação por meio do [Python Any Where](https://jvpasson.pythonanywhere.com/).
 
 ## Youtube Vídeo
 
-Um breve vídeo de demonstração do resultado do projeto foi feito e hospedado no [YouTube](https://youtu.be/2v3xc0ACs0s).
+Um breve vídeo de demonstração do resultado do projeto foi feito e hospedado no [YouTube](https://youtu.be/VJNak3T9u4I).
 
 ## Especificações do projeto
 
-1.	**Registro**: complete a implementação de *register* de forma que um usuário consiga se registrar por meio de um *form*.
-	* O usuário deve fornecer uma entrada de *username* por meio de um *text field*, no qual o *name* é *username*. Caso o campo seja deixado em branco ou o usuário já exista, deve retornar uma mensagem;
-	* Deve ter como *input* também uma senha, implemente isso com um *text field* com *name* de *password* e então faça um campo igual para a confirmação, cujo *name* será *confirmation*. Retorne uma mensagem caso o campo seja deixado em branco ou as senhas não correspondam;
-	* Submeta as entradas do usuário via *POST* para */register*;
-	* Insira o novo usuário no banco de dados *users*, mas não armazene a senha do usuário propriamente, mas uma *hash* da senha.
+Usando JavaScript, HTML e CSS, complete a implementação de uma cliente de email no arquivo *inbox.js*. Você deve cumprir os seguintes requisitos:
+
+1.	**Envio de Email**: quando o usuário submeter um formulário com destinatário, assunto e conteúdo, adicione o código JavaScript para enviar o e-mail.
+	* Você pode querer fazer uma requisição do tipo *POST*, passando valores para *recipients*, *subject* e *body*;
+	* Uma vez que o e-mail foi enviado, carregue a caixa de emails enviados.
+
+2.	**Caixa de Email**: quando um usuário visitar sua *inbox*, *eviados* ou *arquivados*, carregue a caixa de correio adequada.
+	* Você pode querer fazer uma requisição do tipo *GET* para */emails/<mailbox>* para receber os e-mails de uma caixa de correios particular (recebidos, enviados ou arquivados);
+	* Quando uma caixa de correio é visitada, a aplicação deve primeiro ter a query para a API pra os últimos emails daquela caixa;
+	* Quando uma caixa de correio é visitada, o nome da caixa deve aparecer no topo da página (essa parte foi feita para você);
+	* Cada e-mail deve ser renderizado na sua própria box (i.e com uma *div* com bordas) que exibe de quem o e-mail veio, qual o assunto e a data;
+	* Se o e-mail não foi lido ainda, ele deve aparecer com um fundo branco. Se o e-mail já foi lido, deve aparecer com um fundo cinza.
+
+3.	**Ver Email**: quando o usuário clicar em algum e-mail, ele deve ser levado para uma view que exibe o conteúdo do e-mail.
+	* Você pode querer uma requisição do tipo *GET* para */emails/<email_id>* para solicitar o e-mail;
+	* A aplicação deve exibir nessa página: remetente, destinatário, assunto, data e o conteúdo;
+	* Você pode querer adicionar uma *div* em *inbox.html* (além de *emails-view* e *composse-view*) para exibir o e-mail. Certifique-se de atualizar seu código para ocultar e exibir a visualização correta quando determinada opção é selecionada;
+	* Uma vez que o e-mail foi clicado, você deve marcar o e-mail como lido. Veja que você pode enviar uma requisição do tipo *PUT* para */emails/<email_id>* para atualizar se um e-mail foi lido ou não.
 	
-	Após implementar *register* corretamente, você deve estar habilitado a registrar uma conta e logar.
+4.	**Arquivar/Desarquivar**: permita a um usuário arquivar e desarquivar emails recebidos.
+	* Quando visualizar a caixa de emails, cada e-mail da lista deve ser apresentado com um botão permita ao usuário arquivar o email. Quando ver os emails arquivados, o usuário deve ver a opção de desarquivar. Essa opção não se aplica a emails na caixa de enviados;
+	* Relembre que você pode enviar uma requisição do tipo *PUT* para */emails/<email_id>* para marcar um e-mail como arquivado ou desarquivado;
+	* Uma vez que um e-mail foi arquivado ou desarquivado, carregue a inbox do usuário.
 
-2.	**Cotação**: complete a implementação de *quote* de forma que permita a um usuário verificar o preço corrente de uma ação.
-	* O usuário deve fornecer o símbolo da ação e será retornado o preço atual da ação;
-
-3.	**Compra**: complete a implementação de *buy* de forma que permita a um usuário comprar uma ação.
-	* O usuário deve fornecer o símbolo da ação e a quantidade;
-	* Se certifique de que o símbolo exista e a quantidade não é negativa, caso algum desses dois ocorra, retorne uma mensagem ao usuário;
-	* Além disso, você deve se certificar de que o usuário tenha fundos para isso, caso ele não tenha o dinheiro suficiente para adquirir a quantidade de ação a um determinado preço, não deve completar a compra e deverá ser retornada uma mensagem ao usuário.
-	
-	Após implementar *buy* corretamente, deve ser possível ver como se encontra a carteira do usuário.
-
-4.	**Venda**: complete a implementação de *sell* de forma que permita a um usuário vender uma ação.
-	* O usuário deve fornecer o símbolo da ação e a quantidade. No entanto, só deve ser possível vender ações que estão na sua carteira;
-	* Retorne uma mensagem ao usuário caso a quantidade seja negativa, zero ou não tenha aquela quantidade em carteira para vender.
-
-5.	**Histórico**: complete a implementação de *history* de forma que permita a um usuário ver um resume das suas transações, ou seja, o que vendeu e o que comprou.
-	* Em cada linha deixe claro se uma ação foi comprada ou vendida, incluindo o símbolo, o preço, a quantidade e a data de quando a transação ocorreu.
-
-6.	**Toque pessoal**: dê um toque pessoal a aplicação.
+5.	**Responder**: permita a um usuário responder um e-mail.
+	* Quando estiver vendo um e-mail particular, ao usuário deve ser apresentado um botão “Responder” que permitirá responder o e-mail;
+	* Quando o usuário clica em responder, ele deve ser levado para o formulário de composição de e-mail;
+	* Pré-preencha o formulário de composição com o campo de destinatário definido para quem enviou o e-mail original;
+	* Pré-preencha o assunto. Se o email original possui um assunto como “foo”, o novo assunto deve ser “Re: foo”. (Se o assunto já estiver preenchido com “Re: ”, não precisa ser preenchido novamente.);
+	* Pré-preencha o conteúdo do e-mail com uma linha como “On Jan 1 2020, 12:00 AM foo@example.com wrote:” seguido pelo texto do e-mail original.

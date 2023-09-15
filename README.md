@@ -1,4 +1,4 @@
-# CS50 - Project 3 - Mail
+# CS50W - Project 3 - Mail
 
 Repositório que contém o código para a solução do quarto projeto do curso CS50W. A aplicação consiste em um gerenciador de e-mail fake. O objetivo principal do projeto  é permitir que os usuários se registrem, façam login, vejam sua caixa principal, enviem, arquivem e vejam os emails enviados. A aplicação foi construída com o Django framework.
 
